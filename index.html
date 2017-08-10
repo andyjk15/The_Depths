@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Depths</title>
+
+    <link rel="stylesheet" type="text/css" href="scripts/css/style.css" />
+    <script type="text/javascript" src="scripts/js/Maps.js"></script>
+    <script type="text/javascript" src="scripts/js/Engine.js"></script>
+</head>
+
+<body>
+	<div class="data">
+		<div class="id">
+			<h3>
+				The Depths
+			</h3>
+			<br>
+            <p>
+                (^) Up arrow to jump
+            </p>
+			<p>
+        		(<-) Left arrow key to move Left
+   			</p>
+            <p>
+                (->) Right arrow key to move Right
+            </p>
+   			<br>
+    		<p class="info">
+        		/* Insert a brief story here */
+    		</p>
+            <p class="footer">
+                This game is made using HTML5, CSS and Javascript
+                <br>
+                Andrew Sotheran
+            </p>
+		</div>
+		<div class="canvas">
+    		<canvas id="canvas"></canvas>
+    	</div>
+    </div>
+    
+<!-- 
+    <label for="viewport">
+        <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked/> Confine viewport to map</label> -->
+
+    <script type="text/javascript">
+//     debugger;
+// <!--//--><![CDATA[//><!--
+//             var images = new Array()
+//             function preload() {
+//                 for (i = 0; i < preload.arguments.length; i++) {
+//                     images[i] = new Image()
+//                     images[i].src = preload.arguments[i]
+//                 }
+//             }
+//             preload(
+//                 "res/pillar.png",
+//                 "res/floor.png",
+//                 "res/floor_cracked.png",
+//                 "res/floor_mossy.png",
+//                 "res/water.png"
+//             )
+//         //--><!]]>
+    
+        window.requestAnimFrame =
+            window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function(callback) {
+                return window.setTimeout(callback, 1000 / 60);
+        };
+
+        var canvas = document.getElementById('canvas'),
+            ctx    = canvas.getContext('2d');
+
+        canvas.width = 800;
+        canvas.height = 600;
+        
+        /* Setup of the engine & start map */
+        var engine = new Engine();       
+        var map = new Maps();
+
+
+        //POSSIBLE FEATURE - Player may have to find a torch to enable this view -- Commenting this out disables the screen view
+        engine.set_viewport(canvas.width, canvas.height);
+
+
+        engine.load_map(map);
+
+        /* Limit the viewport to the confines of the map */
+        
+        engine.limit_viewport = false;
+
+        var Loop = function() {
+
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            engine.update();
+            engine.draw(ctx);
+
+            window.requestAnimFrame(Loop);
+        };
+
+        /* Start */
+        
+        Loop();
+        
+    </script>
+</body>
+
+</html>
