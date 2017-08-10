@@ -23,7 +23,7 @@ var Maps = function () {
             keys: [
                 {id: 0, colour: '#333', solid: 0},
                 {id: 1, colour: '#888', solid: 0},
-                {id: 2,colour: '../res/pillar.png'/*'#555'*/,solid: 1,bounce: 0.30},
+                {id: 2,colour: /*'../res/pillar.png'*/'#555',solid: 1,bounce: 0.30},
                 {id: 3,colour: 'rgba(121, 220, 242, 0.5)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1},
                 {id: 4,colour: '#777',jump: 1},
                 {id: 5,colour: '#E373FA',solid: 1,bounce: 1.1},
@@ -36,7 +36,7 @@ var Maps = function () {
                 {id: 12,colour: '#0FF',solid: 0,script: 'unlock'},
 
                 /*20 IDs used for shading*/
-                {id: 21, colour: '../res/pillar.png'/*'#585858'*/, solid: 1, bounce: 0.30},    //Horz Pillar
+                {id: 21, colour: '#585858', solid: 1, bounce: 0.30},    //Horz Pillar
                 {id: 22, colour: '#5A5A5A', solid: 1, bounce: 0.30},    //Brick
                 {id: 23, colour: '#5B5B5B', solid: 1, bounce: 0.30}     //Mossy Brick
             ],

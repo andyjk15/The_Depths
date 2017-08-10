@@ -170,13 +170,13 @@ Engine.prototype.draw_tile = function ( x, y, tile, context) {
 
     if (!tile || !tile.colour) return;
 debugger;
-    var imgTile = new Image();
-    imgTile.src = "../res/pillar.png";
-    imgTile.onload = function () {
+    // var imgTile = new Image();
+    // imgTile.src = "../res/pillar.png";
+    // imgTile.onload = function () {
         //context.drawImage(imgTile, x, y);
-        context.fillStyle = imgTile;
-    }
-        //context.fillStyle = tile.colour;
+    //     context.fillStyle = imgTile;
+    // }
+        context.fillStyle = tile.colour;
         context.fillRect(
             x,
             y,
