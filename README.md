@@ -4,15 +4,15 @@
 
 ======================================================================
 
-You find you self in the sewers of Orthis, the city of prosperity on our day and age. 
+You find yourself in the sewers of ______, the city of prosperity in our day and age. 
 
 Where everyone is Square.
 
-Unfortunatly you were not born into a life of luck, quite the opposite, you have had a hard life as a circle. Bullied for being different, intititions discriminated against you, no one wanted to hire you. 
+Unfortunatly you were not born into a life of luck, quite the opposite, you have had a hard life as a circle. Bullied for being different, institutions discriminated against you, no one wanted to hire you. 
 
-As your life became a constant downfall and you find yourself as the low of the low of society, you now reside in the sewers of the city. 
+As your life became a constant downfall you find yourself as the low of the low of society, you now reside in the sewers of the city. 
 
-Trying to scrap together a decent meal to survive among the scraps, you have not given up hope! You can still become something, discover yourself by exploring the vast underground networks of the sewers. Discover what you life really entails for you!
+Trying to scrape together a decent meal to survive, but you have not given up hope! You can still become something, discover yourself by exploring the vast underground networks of the sewers. Discover what you life really entails for you!
 
 -----------------------------------------------------------------------
 
