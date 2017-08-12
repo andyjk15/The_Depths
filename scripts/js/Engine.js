@@ -169,7 +169,6 @@ Engine.prototype.get_tile = function (x, y) {
 Engine.prototype.draw_tile = function ( x, y, tile, context) {
 
     if (!tile || !tile.colour) return;
-debugger;
     // var imgTile = new Image();
     // imgTile.src = "../res/pillar.png";
     // imgTile.onload = function () {
@@ -202,8 +201,7 @@ Engine.prototype.draw_map = function (context, fore) {
                 || t_x > this.viewport.x
                 || t_y > this.viewport.y) continue;
                 
-                debugger;
-                
+
                 this.draw_tile(
                     t_x,
                     t_y,
