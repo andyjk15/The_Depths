@@ -13,6 +13,7 @@ var Engine = function () {
     this.log_info       = true;
     this.tile_size      = 16;
     this.limit_viewport = false;
+    this.was_space      = false;
     this.jump_switch    = 0;
     
     this.viewport = {
@@ -67,10 +68,31 @@ Engine.prototype.set_viewport = function (x, y) {
     this.viewport.y = y;
 };
 
+Engine.prototype.get_was_space = function () {
+    return this.was_space;
+};
+
 Engine.prototype.keydown = function (e) {
 
     var _this = this;
 
+    if(!this.was_space){
+        switch (e.keyCode) {
+            case 32:
+                _this.key.up = true;
+                break;
+            case 65:
+                _this.key.left = true;
+                break;
+            case 68:
+                _this.key.right = true;
+                break;
+            case 87:
+                _this.key.up = true;
+                break;
+        }
+        return;
+    }
     switch (e.keyCode) {
     case 37:
         _this.key.left = true;
@@ -81,6 +103,7 @@ Engine.prototype.keydown = function (e) {
     case 39:
         _this.key.right = true;
         break;
+
     }
 };
 
@@ -88,6 +111,23 @@ Engine.prototype.keyup = function (e) {
 
     var _this = this;
 
+    if(!this.was_space){
+        switch (e.keyCode) {
+            case 32:
+                _this.key.up = false;
+                break;
+            case 65:
+                _this.key.left = false;
+                break;
+            case 68:
+                _this.key.right = false;
+                break;
+            case 87:
+                _this.key.up = false;
+                break;
+        }
+        return;
+    }
     switch (e.keyCode) {
     case 37:
         _this.key.left = false;
@@ -352,7 +392,7 @@ Engine.prototype.move_player = function () {
         if(c_x != this.camera.x) {
             
             this.camera.x += c_x > this.camera.x ? mag : -mag;
-            
+
             if(this.limit_viewport) {
                 
                 this.camera.x = 
@@ -378,20 +418,20 @@ Engine.prototype.move_player = function () {
             
             this.camera.y += c_y > this.camera.y ? mag : -mag;
         
-            if(this.limit_viewport) {
+            // if(this.limit_viewport) {
                 
-                this.camera.y = 
-                    Math.min(
-                        this.current_map.height_p - this.viewport.y + this.tile_size,
-                        this.camera.y
-                    );
+            //     this.camera.y = 
+            //         Math.min(
+            //             this.current_map.height_p - this.viewport.y + this.tile_size,
+            //             this.camera.y
+            //         );
                 
-                this.camera.y = 
-                    Math.max(
-                        0,
-                        this.camera.y
-                    );
-            }
+            //     this.camera.y = 
+            //         Math.max(
+            //             0,
+            //             this.camera.y
+            //         );
+            // }
         }
     }
     
