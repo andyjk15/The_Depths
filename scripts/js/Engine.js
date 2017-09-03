@@ -15,6 +15,8 @@ var Engine = function () {
     this.limit_viewport = false;
     this.was_space      = false;
     this.jump_switch    = 0;
+    this.reversed       = false;
+    this.score          = 0;
     
     this.viewport = {
         x: 200,
@@ -66,6 +68,22 @@ Engine.prototype.set_viewport = function (x, y) {
 
     this.viewport.x = x;
     this.viewport.y = y;
+};
+
+Engine.prototype.set_score = function (amt) {
+    if(this.score >= 99 || this.score =='CP') {
+        this.score = 'CP';
+    } else {
+        this.score += amt;
+    }
+};
+
+Engine.prototype.get_score = function () {
+    return this.score;
+};
+
+Engine.prototype.set_reversed = function (reverse) {
+    this.reversed = reverse;
 };
 
 Engine.prototype.get_was_space = function () {
@@ -418,20 +436,6 @@ Engine.prototype.move_player = function () {
             
             this.camera.y += c_y > this.camera.y ? mag : -mag;
         
-            // if(this.limit_viewport) {
-                
-            //     this.camera.y = 
-            //         Math.min(
-            //             this.current_map.height_p - this.viewport.y + this.tile_size,
-            //             this.camera.y
-            //         );
-                
-            //     this.camera.y = 
-            //         Math.max(
-            //             0,
-            //             this.camera.y
-            //         );
-            // }
         }
     }
     
@@ -445,10 +449,24 @@ Engine.prototype.move_player = function () {
 
 Engine.prototype.update_player = function () {
 
-    if (this.key.left) {
-
-        if (this.player.vel.x > -this.current_map.vel_limit.x)
-            this.player.vel.x -= this.current_map.movement_speed.left;
+    if (this.reversed == true) {
+        if (this.key.left) {
+            if (this.player.vel.x > -this.current_map.vel_limit.x)
+                this.player.vel.x += this.current_map.movement_speed.left;
+        }
+        if (this.key.right) {
+            if (this.player.vel.x < this.current_map.vel_limit.x)
+                this.player.vel.x -= this.current_map.movement_speed.left;
+        }
+    } else {
+        if (this.key.left) {
+            if (this.player.vel.x > -this.current_map.vel_limit.x)
+                this.player.vel.x -= this.current_map.movement_speed.left;
+        }
+        if (this.key.right) {
+            if (this.player.vel.x < this.current_map.vel_limit.x)
+                this.player.vel.x += this.current_map.movement_speed.left;
+        }
     }
 
     if (this.key.up) {
@@ -458,12 +476,6 @@ Engine.prototype.update_player = function () {
             this.player.vel.y -= this.current_map.movement_speed.jump;
             this.player.can_jump = false;
         }
-    }
-
-    if (this.key.right) {
-
-        if (this.player.vel.x < this.current_map.vel_limit.x)
-            this.player.vel.x += this.current_map.movement_speed.left;
     }
 
     this.move_player();
