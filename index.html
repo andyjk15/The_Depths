@@ -3,7 +3,7 @@
 
 <head>
     <title>The Depths</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="scripts/css/style.css"/>
     <script type="text/javascript" src="scripts/js/Maps.js"></script>
     <script type="text/javascript" src="scripts/js/Engine.js"></script>
@@ -12,10 +12,13 @@
 <body>
 	<div class="data">
 		<div class="id">
-			<h3>
-				The Depths
-			</h3>
+        <div class="title">
+                 <h3>
+                    The Depths
+                 </h3>
+            </div>
 			<br>
+            <div class="about">
             <div style="white-space: nowrap;">
             <input type="checkbox" id="controls" onclick="engine.was_space=this.checked;" checked/>
             <label for="controls" id="control"></label>
@@ -34,9 +37,11 @@
                 <br><br>As your life became a constant downfall you find yourself as the low of the low of society, you now reside in the sewers of the city. 
                 <br><br>Trying to scrape together a decent meal to survive, but you have not given up hope! You can still become something, discover yourself by exploring the vast underground networks of the sewers. Discover what you life really entails for you!
     		</p>
+            </div>
 		</div>
         
         <div class="game">
+            <div id="tag">+1</div>
             <div id="count">0</div>
     	    <canvas id="canvas"></canvas>
     	   
@@ -110,7 +115,8 @@
         engine.limit_viewport = true;
         engine.was_space = true;
 
-        if(engine.get_was_space()) {
+        var Loop = function() {
+            if(engine.get_was_space()) {
                 document.getElementById("Using").innerHTML = " Using Arrow keys for controls";
                 document.getElementById("control").innerHTML = "Uncheck to use WAS & SPACE keys for controls";
                 document.getElementById("jump").innerHTML = "(^) Up arrow to jump";
@@ -123,8 +129,6 @@
                 document.getElementById("left").innerHTML = "(<-) A key to move Left";
                 document.getElementById("right").innerHTML = "(->) S key to move Right";
             }
-
-        var Loop = function() {
 
             if(engine.get_score() !== null) {
                 document.getElementById("count").innerHTML = engine.get_score();

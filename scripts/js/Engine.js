@@ -74,6 +74,29 @@ Engine.prototype.set_score = function (amt) {
     if(this.score >= 99 || this.score =='CP') {
         this.score = 'CP';
     } else {
+        $({score: 0}).animate({score: amt},{
+            duration: 1000,
+            easing:"linear",
+        step: function(now, fx){
+            $("#score").html(this.score + Math.floor(now));
+        },
+            queue:false,
+        complete: function(now, fx){
+            this.score += amt;
+        }
+    });
+    $("#tag").fadeIn({
+        duration:700,
+        easing:"linear",
+        step:function(now, fx){
+            $(this).css("top", -55 * now  +"px");
+        }
+    }).fadeOut({
+        duration:300,
+        step:function(now, fx){
+            $(this).css("top",-55 * ( 2 - now) + "px");
+        }
+    });
         this.score += amt;
     }
 };
@@ -93,6 +116,12 @@ Engine.prototype.get_was_space = function () {
 Engine.prototype.keydown = function (e) {
 
     var _this = this;
+
+    switch (e.keyCode) {
+    case 37: case 39: case 38:  case 40: // Arrow keys
+        case 32: e.preventDefault(); break; // Space
+        default: break; // do not block other keys
+    }
 
     if(!this.was_space){
         switch (e.keyCode) {
