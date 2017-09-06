@@ -18,11 +18,23 @@ canvas {
 	box-shadow: 0 0 20px 2px rgba(255,255,255,0.8);
 }
 
+.title {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 50px;
+  background-color: rgb(255,0,0);
+  width:100%;
+  height: 80%;
+}
+
 h3 {
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 18px;
+	font-size: 20px;
 	color: #f89649;
-	margin: 0 auto;
 	text-align: center;
 }
 
@@ -35,23 +47,25 @@ p {
 }
 
 .info {
+  position: absolute;
 	border: 1px solid #333;
 	-webkit-box-shadow: 0 0 16px 2px rgba(100,100,100,0.8);
 	box-shadow: 0 0 20px 2px rgba(255,255,255,0.8);
 	margin: 14px auto;
 	padding: 10px;
 	text-align: justify;
-	font-size: 13px;
+	font-size: 15px;
 	color: rgb(222,222,222);
 }
 
 .data {
+  position: absolute;
 	width: 100%;
   top:0;
   bottom: 0;
   left: 0;
   right: 0;
-
+  padding:0;
   margin: auto;
 }
 
@@ -68,12 +82,28 @@ p {
   /*margin: auto;*/
 	/*margin-top: 5%;
 	margin-left: 5%;*/
-	width: 80%;
+	width: 100%;
+}
+
+.about {
+  position: absolute;
+  top:250px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  /*float: center;*/
+  /*display: block;*/
+  /*margin: auto;*/
+  /*margin-top: 5%;
+  margin-left: 5%;*/
+  width: 80%;
 }
 
 .game {
 	position: absolute;
-  top:450px;
+  top:600px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -115,10 +145,27 @@ p {
   right: 0;
 
   margin: auto;
+  margin-bottom: 20px;
   width:25%;
 }
 
+#tag {
+  transform-style: preserve-3d;
+  display: none;
+  position:absolute;
+  top:0;
+  left:3%;
+  margin-bottom: -10px;
+  transform: translateX(-50%);
+  color: #CCC;
+  font-family: 'Arvo', sans-serif;
+  text-shadow: 1px 1px 5px black;
+  font-size:30px;
+  line-height: 50px;
+}
+
 #count {
+  transform-style: preserve-3d;
   position: absolute;
   top:50px;
   left:0;
@@ -126,6 +173,8 @@ p {
   padding: 10px 12px;
   font-size: 40px;
   font-family: 'Arvo', sans-serif;
+  text-shadow: 1px 1px 5px black;
+  color: #CCC;
   float: center;
   line-height: 40px;
   font-weight: 400;
