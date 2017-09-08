@@ -9,7 +9,7 @@ var Maps = function () {
     
 	var map = {
             
-            tile_size: 16,
+            tile_size : 16,
             /*
             
             Key vairables:
@@ -33,39 +33,39 @@ var Maps = function () {
             
             */
            
-            keys: [
-                {id: 0,colour: '#333', solid: 0},
-                {id: 1,colour: '#888', solid: 0},
-                {id: 2,colour: '#555',solid: 1,bounce: 0.30},
-                {id: 3,colour: 'rgba(121, 220, 242, 0.5)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1},    //water
-                {id: 4,colour: '#777',jump: 1},                                         //elevator
-                {id: 5,colour: '#E373FA',solid: 1,bounce: 1.1},
-                {id: 6,colour: '#666',solid: 1,bounce: 0},
-                {id: 7,colour: '#67b2e1',solid: 0,script: 'change_colour'},
-                {id: 8,colour: '#FADF73',solid: 0,script: 'next_level'},
-                {id: 9,colour: '#b42d2d',solid: 0,script: 'death'},
-                {id: 10,colour: '#848484', friction: {x: 0.85, y: 0.85}},   //Sludge
-                {id: 11,colour: '#9F9',solid: 0,script: 'reverse'},         //Reverse block
-                {id: 12,colour: '#0FF',solid: 0,script: 'unlock'},          //Normal unlock
-                {id: 13,colour: '#0FF',solid: 0,script: 'lock'},            //Unlock a path and lock another
-                {id: 14,colour: '#888',solid: 0,script: 'reset_reverse'},   //Resets player movement
+            keys : [
+            {id  : 0,colour: '#333', solid: 0},
+            {id  : 1,colour: '#888', solid: 0},
+            {id  : 2,colour: '#555',solid: 1,bounce: 0.30},
+            {id  : 3,colour: 'rgba(121, 220, 242, 0.5)',friction: {x: 0.9,y: 0.9},gravity: {x: 0,y: 0.1},jump: 1,fore: 1},    //water
+            {id  : 4,colour: '#777',jump: 1},                                         //elevator
+            {id  : 5,colour: '#E373FA',solid: 1,bounce: 1.1},
+            {id  : 6,colour: '#666',solid: 1,bounce: 0},
+            {id  : 7,colour: '#67b2e1',solid: 0,script: 'change_colour'},
+            {id  : 8,colour: '#FADF73',solid: 0,script: 'next_level'},
+            {id  : 9,colour: '#b42d2d',solid: 0,script: 'death'},
+            {id  : 10,colour: '#848484', friction: {x: 0.85, y: 0.85}},   //Sludge
+            {id  : 11,colour: '#9F9',solid: 0,script: 'reverse'},         //Reverse block
+            {id  : 12,colour: '#0FF',solid: 0,script: 'unlock'},          //Normal unlock
+            {id  : 13,colour: '#0FF',solid: 0,script: 'lock'},            //Unlock a path and lock another
+            {id  : 14,colour: '#888',solid: 0,script: 'reset_reverse'},   //Resets player movement
 
                 //Secret unlocks (Lock)
-                {id: 15,colour: '#555',solid: 1},
-                {id: 16,colour: '#888',solid: 0},
+            {id  : 15,colour: '#555',solid: 1},
+            {id  : 16,colour: '#888',solid: 0},
 
                 //Secret unlocks (normal unlock)
-                {id: 17,colour: '#333',solid: 0},
-                {id: 18,colour: '#333',solid: 1},
-                {id: 19,colour: '#555',solid: 1},
-                {id: 20,colour: '#FFF',solid: 0,script: 'point'},           //coins
+            {id  : 17,colour: '#333',solid: 0},
+            {id  : 18,colour: '#333',solid: 1},
+            {id  : 19,colour: '#555',solid: 1},
+            {id  : 20,colour: '#FFF',solid: 0,script: 'point'},           //coins
 
                 /*20 IDs used for shading/textures if i can figure it out*/
-                {id: 21,colour: '#585858', solid: 1, bounce: 0.30},    //Horz Pillar
-                {id: 22,colour: '#5A5A5A', solid: 1, bounce: 0.30},    //Brick
-                {id: 23,colour: '#5B5B5B', solid: 1, bounce: 0.30},    //Mossy Brick
+            {id  : 21,colour: '#585858', solid: 1, bounce: 0.30},    //Horz Pillar
+            {id  : 22,colour: '#5A5A5A', solid: 1, bounce: 0.30},    //Brick
+            {id  : 23,colour: '#5B5B5B', solid: 1, bounce: 0.30},    //Mossy Brick
 
-                {id: 99, colour: '#888', solid: 1}                      //Invisible block
+            {id  : 99, colour: '#888', solid: 1}                      //Invisible block
             ],
         
             /* An array representing the map tiles. Each number corresponds to a key */
@@ -83,45 +83,45 @@ var Maps = function () {
         
             /* Default gravity of the map */
             
-            gravity: {
-                x: 0,
-                y: 0.3
+            gravity : {
+                x : 0,
+                y : 0.3
             },
             
             /* Velocity limits */
         
-            vel_limit: {
-                x: 2,
-                y: 16
+            vel_limit : {
+                x : 2,
+                y : 16
             },
         
             /* Movement speed when the key is pressed */
             
-            movement_speed: {
-                jump: 4,
-                left: 0.3,
+            movement_speed : {
+                jump : 4,
+                left : 0.3,
                 right: 0.3
             },
             
             /* The coordinates at which the player spawns and the colour of the player */
         
-            player: {
-                x: 2,
-                y: 5,
+            player : {
+                x : 2,
+                y : 5,
                 colour: '#FF9900'
             },
             
             /* scripts refered to by the "script" variable in the tile keys */
         
-            scripts: {
-                change_colour: 'this.player.colour = colour_change;',
-                next_level: 'this.load_map(Maps.RandomiseMapGeneration(1));',
-                death: 'alert("You died!");this.load_map(map);',
-                unlock: 'this.current_map.keys[17].solid = 1;this.current_map.keys[17].colour = "#555";this.current_map.keys[18].solid = 0;this.current_map.keys[18].colour = "#888";this.current_map.keys[19].solid = 0;this.current_map.keys[19].colour = "#888";',
-                lock: '//Code for each map',
-                reverse: 'this.set_reversed(true);',
-                reset_reverse: 'this.set_reversed(false);',
-                point: 'this.set_score(11);'
+            scripts : {
+                change_colour : 'this.player.colour = colour_change;',
+                next_level    : 'this.load_map(Maps.RandomiseMapGeneration(1));',
+                death         : 'alert("You died!");this.load_map(map);',
+                unlock        : 'this.current_map.keys[17].solid = 1;this.current_map.keys[17].colour = "#555";this.current_map.keys[18].solid = 0;this.current_map.keys[18].colour = "#888";this.current_map.keys[19].solid = 0;this.current_map.keys[19].colour = "#888";',
+                lock          : '//Code for each map',
+                reverse       : 'this.set_reversed(true);',
+                reset_reverse : 'this.set_reversed(false);',
+                point         : 'this.set_score(11);'
             }
         }
 
