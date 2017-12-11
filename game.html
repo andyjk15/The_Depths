@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Depths</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="scripts/css/style.css"/>
+        <script type="text/javascript" src="scripts/js/Maps.js"></script>
+        <script type="text/javascript" src="scripts/js/Engine.js"></script>
+    </head>
+    <body>
+        <div class="data">
+            <div class="id">
+                <div class="title">
+                    <h3>
+                    The Depths
+                    </h3>
+                </div>
+                <br>
+                <div class="about">
+                    <div style="white-space: nowrap;">
+                        <input type="checkbox" id="controls" onclick="engine.was_space=this.checked;" checked/>
+                        <label for="controls" id="control"></label>
+                        <br>
+                        <label for="controls" id="Using"></label>
+                    </div>
+                    <br>
+                    <p id="jump"></p>
+                    <p id="left"></p>
+                    <p id="right"></p>
+                </div>
+            </div>
+            
+            <div class="game">
+                <div id="tag">+1</div>
+                <div id="count">0</div>
+                <canvas id="canvas"></canvas>
+                
+            </div>
+            <p class="footer">
+                This game is made using HTML5, CSS and Javascript - by Andrew Sotheran
+            </p>
+        </div>
+        
+        <script type="text/javascript">
+        //     debugger;
+        // <!--//--><![CDATA[//><!--
+        //             var images = new Array()
+        //             function preload() {
+        //                 for (i = 0; i < preload.arguments.length; i++) {
+        //                     images[i] = new Image()
+        //                     images[i].src = preload.arguments[i]
+        //                 }
+        //             }
+        //             preload(
+        //                 "res/pillar.png",
+        //                 "res/floor.png",
+        //                 "res/floor_cracked.png",
+        //                 "res/floor_mossy.png",
+        //                 "res/water.png"
+        //             )
+        //         //--><!]]>
+        // if(this.checked){
+        //     $("jump").update("boop");
+        // } else {
+        // }
+        window.requestAnimFrame =
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+        return window.setTimeout(callback, 1000 / 60);
+        };
+        var canvas = document.getElementById('canvas'),
+        ctx    = canvas.getContext('2d');
+        canvas.width = 800;
+        canvas.height = 600;
+        
+        /* Setup of the controllers */
+        var engine = new Engine();
+        var map = new Maps();
+        //POSSIBLE FEATURE - Player may have to find a torch to enable this view -- Commenting this out disables the screen view && will need to se limit_viewport = false for it to work well
+        engine.set_viewport(canvas.width, canvas.height);
+        engine.load_map(map);
+        /* Limit the viewport to the confines of the map */
+        
+        engine.limit_viewport = true;
+        engine.was_space = true;
+        var Loop = function() {
+        if(engine.get_was_space()) {
+        document.getElementById("Using").innerHTML = " Using Arrow keys for controls";
+        document.getElementById("control").innerHTML = "Uncheck to use WAS & SPACE keys for controls";
+        document.getElementById("jump").innerHTML = "(^) Up arrow to jump";
+        document.getElementById("left").innerHTML = "(<-) Left arrow key to move Left";
+        document.getElementById("right").innerHTML = "(->) Right arrow key to move Right";
+        } else {
+        document.getElementById("Using").innerHTML = " Using WAS & SPACE keys for controls";
+        document.getElementById("control").innerHTML = "Check to use Arrow keys for controls";
+        document.getElementById("jump").innerHTML = "(^) W key or SPACE to jump";
+        document.getElementById("left").innerHTML = "(<-) A key to move Left";
+        document.getElementById("right").innerHTML = "(->) S key to move Right";
+        }
+        if(engine.get_score() !== null) {
+        document.getElementById("count").innerHTML = engine.get_score();
+        }
+        ctx.fillStyle = '#333';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        engine.update();
+        engine.draw(ctx);
+        window.requestAnimFrame(Loop);
+        };
+        /* Start */
+        
+        Loop();
+        
+        </script>
+    </body>
+</html>

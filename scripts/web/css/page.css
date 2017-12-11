@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Martel+Sans:200,300,400,800,900);
+@import url(https://fonts.googleapis.com/css?family=Arvo);
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background: #555;
+}
+
+.Container {
+	position: static;
+	height: 100%;
+}
+
+.logo {
+	position: static;
+	width: 100%;
+	height: 100px;
+}
+
+.nav {
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	margin-left: 100px;
+}
+
+.nav ul {
+	position: relative;
+	list-style-type: none;
+	width: 200px;
+}
+
+.nav ul li {
+	position: relative;
+	display: inline;
+	width: 200px;
+}
+
+/* Global Variable */
+/* Element Variables
+   Change @bar-w to adjust entire button size.
+*/
+/* Ninja Button styles */
+.ninja-btn {
+  display: inline-block;
+  float: left;
+  position: relative;
+  width: 44px;
+  height: 28.66666667px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 20px;
+}
+.ninja-btn span,
+.ninja-btn span:before,
+.ninja-btn span:after {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  background-color: #ffffff;
+  width: 44px;
+  height: 2px;
+}
+.ninja-btn span {
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin-top: 13.33333333px;
+}
+.ninja-btn span:before,
+.ninja-btn span:after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.ninja-btn span:before {
+  top: -13.33333333px;
+}
+.ninja-btn span:after {
+  top: 13.33333333px;
+}
+/* Ninja Button */
+.ninja-btn.active span {
+  background-color: transparent;
+}
+.ninja-btn.active span:before,
+.ninja-btn.active span:after {
+  top: 0;
+}
+.ninja-btn.active span:before {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+}
+.ninja-btn.active span:after {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+}
+/* Ninja Button Active */
