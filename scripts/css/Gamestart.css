@@ -175,7 +175,7 @@ section.p16 a:before
 
     width: 1772px;
 
-    -webkit-animation: chicaum 60s infinite linear;
+    -webkit-animation: chicaum 30s infinite linear;
        -moz-animation: chicaum 60s infinite linear;
             animation: chicaum 60s infinite linear;
 
@@ -185,7 +185,7 @@ section.p16 a:after
 {
     z-index: 1;
 
-    width: 1682px;
+    width: 2200px;
 
     -webkit-animation: chicadois 30s infinite linear;
        -moz-animation: chicadois 30s infinite linear;
